@@ -51,7 +51,7 @@
                     fixed4 colTex = tex2D(_MainTex, i.uv);
                     fixed d = length(colTex);
                     fixed4 colMask = tex2D(_MaskTex, i.uv);
-                    if (colMask.x < 0.1) {
+                    if (colMask.w > 0.5) {
                         if (d > 0.1)
                             return fixed4(0, 1, 0, 1);
                         else
