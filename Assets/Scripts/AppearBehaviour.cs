@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AppearBehaviour : MonoBehaviour
 {
@@ -8,6 +6,9 @@ public class AppearBehaviour : MonoBehaviour
     private float _startTime;
     private float _target = 0;
     private float _start = 0;
+
+    [SerializeField] private float _appearDelta = 0;
+
     void Start()
     {
         
@@ -18,7 +19,7 @@ public class AppearBehaviour : MonoBehaviour
     {
         var material = GetComponent<Renderer>().sharedMaterial;
 
-        material.SetFloat("_LastAppearValue", Mathf.Clamp(Mathf.Pow(Time.time - _startTime, 2) + _start, _start, _target));
+        material.SetFloat("_LastAppearValue", Mathf.Clamp(Mathf.Pow(Time.time - _startTime, 2) + _start, _start, _target - _appearDelta));
         material.SetFloat("_AppearValue", Mathf.Clamp(Time.time - _startTime + _start, _start, _target));
 
         var texture = GetComponentInParent<GalleryTextureSelector>().CurrentTexture;
