@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RagdollAnimation : MonoBehaviour
+public class RagdollAnimation : MonoBehaviour, IBzRagdollCharacter
 {
     private bool _isKinematic = true;
 
@@ -35,4 +35,12 @@ public class RagdollAnimation : MonoBehaviour
             rb.isKinematic = isKinematic;
         GetComponent<Animator>().enabled = isKinematic;
     }
+
+    public void CharacterEnable(bool enable)
+    {
+        
+    }
+
+    public Vector3 CharacterVelocity => Vector3.zero;
+
 }
